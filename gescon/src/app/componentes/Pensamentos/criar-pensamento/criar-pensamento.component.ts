@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { PensamentoService } from './../pensamento.service';
 import { Pensamento } from './../pensamento';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -15,25 +16,45 @@ export class CriarPensamentoComponent {
   
   constructor (
     private service: PensamentoService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
     ) { }
 
-    pensamento: Pensamento = {
-    conteudo: '',
-    autoria: '',
-    modelo: 'modelo1'
-  }
+    ngOnInit(): void {
+      this.formulario = this.formBuilder.group({
+        conteudo: ['', Validators.compose ([
+          Validators.required,
+          Validators.pattern(/(.|\s)*\S(.|\s)*/)
+        ])],
+        autoria: ['', Validators.compose([
+          Validators.required,
+          Validators.minLength(3)
+        ])],
+        modelo: ['modelo1']
+      })
+    }
 
+    formulario!: FormGroup;
 
   criarPensamento() {
-    this.service.criar(this.pensamento).subscribe(() => {
-      this.router.navigate(['/listarPensamento'])
-    })
+    if(this.formulario.valid) {
+      this.service.criar(this.formulario.value).subscribe(() => {
+        this.router.navigate(['/listarPensamento'])
+      })
+    }
   }
 
   cancelar() {
     this.router.navigate(['/listarPensamento'])
   }
   
+  habilitarBotao(): String {
+    if(this.formulario.valid) {
+      return 'botao'
+    } else {
+      return 'botao__desabilitado'
+    }
+  }
+
 }
 

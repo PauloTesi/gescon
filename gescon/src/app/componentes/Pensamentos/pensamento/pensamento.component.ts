@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { count } from 'rxjs';
 import { Pensamento } from '../pensamento';
 
 @Component({
@@ -22,4 +23,9 @@ export class PensamentoComponent {
     }
       return 'pensamento-p'
   }
+
 }
+
+
+
+
