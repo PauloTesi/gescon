@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Pensamento } from './../pensamento';
+import { PensamentoService } from '../pensamento.service';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -6,21 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./listar-pensamento.component.css']
 })
 export class ListarPensamentoComponent {
-  listaPensamentos = [
-    {
-      conteudo: 'Angular é top',
-      autoria: "Paulo",
-      modelo: 'modelo3'
-    },    
-    {
-      conteudo: 'Passo inf para o componente filho',
-      autoria: "Paulo",
-      modelo: 'modelo2'
-    },    
-    {
-      conteudo: 'Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input() Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()Minha propriedade é decorada com @Input()',
-      autoria: "Paulo",
-      modelo: 'modelo1'
-    }  
-  ];
+  listaPensamentos: Pensamento[] = [];
+
+  constructor(private service: PensamentoService) { }
+
+  ngOnInit(): void {
+    this.service.listar().subscribe((listaPensamentos) => {
+      this.listaPensamentos = listaPensamentos;
+    })
+  }
+
 }

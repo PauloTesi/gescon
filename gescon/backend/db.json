@@ -1,0 +1,22 @@
+{
+  "pensamentos": [
+    {
+      "id": 1,
+      "conteudo": "Sei que nada sei, eis a questão",
+      "autoria": "Shakespeare",
+      "modelo": "modelo3"
+    },
+    {
+      "conteudo": "Sei que nada sei, eis a questão",
+      "autoria": "Teste de edicao",
+      "modelo": "modelo3",
+      "id": 2
+    },
+    {
+      "conteudo": "Fui bom aluno, será?",
+      "autoria": "Sergio Malandro",
+      "modelo": "modelo3",
+      "id": 3
+    }
+  ]
+}
