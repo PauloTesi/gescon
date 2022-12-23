@@ -1,0 +1,28 @@
+name: Node
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['19.3.0', '19.2.0', '>=19.3.0']
+        os: ['ubuntu-latest', 'ubuntu-18.04']
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node_version }}
+      
+    - name: Build
+      run: docker-compose build
+ 
+  docker:
+    needs: build
+    uses: ./.github/workflows/Docker.yml
