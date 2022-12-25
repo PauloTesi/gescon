@@ -22,4 +22,7 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - run: npm ci
 #    - run: npm run build --if-present
-    - run: npm test
+#    - run: npm test
+
+    - name: Rodando o BD
+    - run: cd backend && ng serve
