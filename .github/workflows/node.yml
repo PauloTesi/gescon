@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node_version }}
         cache: 'npm'
-            steps:
+
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
@@ -32,3 +32,12 @@ jobs:
 #  docker:
 #    needs: build
 #    uses: ./.github/workflows/Docker.yml
+
+#    - name: Build-DB
+#      run: docker-compose build
+
+#    - name: Create-DB
+#      run: docker-compose up -d
+
+#    - name: Test
+#      run: go test -v main_test.go 
