@@ -26,7 +26,7 @@ jobs:
 #    - run: npm test
   docker:
     needs: test
-    uses: ./.github/workflows/Docker.yml
+    uses: './.github/workflows/Docker.yml'
 #    - name: BD-Json-server
 #      run: cd backend && ng serve
 
