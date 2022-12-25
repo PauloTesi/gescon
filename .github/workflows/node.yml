@@ -20,6 +20,7 @@ jobs:
         node-version: ${{ matrix.node_version }}
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
-    - run: npm install
+    - run: docker-compose build
+#    - run: npm install
 #    - run: npm run build --if-present
 #    - run: npm test
