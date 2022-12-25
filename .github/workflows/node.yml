@@ -26,7 +26,7 @@ jobs:
 #    - run: npm test
 
     - name: BD-Json-server
-      run: cd /backend && ng serve
+      run: cd backend && ng serve
       
 
 
