@@ -3,6 +3,8 @@ Tecnologias utilizadas:
         Repositório criado no Github
     NodeJS para o Angular
         Versão 18.12.1
+        Instalar o Angular  
+            npm install -g @angular/cli
     Typescript e Javascript
 
     Backend
