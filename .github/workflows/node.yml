@@ -24,5 +24,5 @@ jobs:
 #    - run: npm run build --if-present
 #    - run: npm test
 
-    - name: Rodando o BD
+
     - run: cd backend && ng serve
