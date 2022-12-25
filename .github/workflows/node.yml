@@ -20,7 +20,7 @@ jobs:
         node-version: ${{ matrix.node_version }}
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
-    - run: cd gescon && ls
-    - run: npm install
+    - run: cd gescon && ls && npm install
+#    - run: npm install
     - run: npm run build --if-present
     - run: npm test
