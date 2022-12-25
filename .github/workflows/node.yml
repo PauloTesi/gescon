@@ -8,9 +8,6 @@ jobs:
 
   test:
     runs-on: ${{ matrix.os }}
-    defaults:
-       run:
-         working-directory: ./server/
     strategy:
       matrix:
         node_version: [14.x, 16.x, 18.x]
