@@ -25,9 +25,11 @@ jobs:
 #    - run: npm run build --if-present
 #    - run: npm test
 
-    - name: BD-Json-server
-      run: cd backend && ng serve
-      
+#    - name: BD-Json-server
+#      run: cd backend && ng serve
+
+    - name: Build-DB
+      run: docker-compose build
 
 
       
