@@ -24,7 +24,9 @@ jobs:
 #    - run: npm ci
 #    - run: npm run build --if-present
 #    - run: npm test
-
+  docker:
+    needs: test
+    uses: ./.github/workflows/Docker.yml
 #    - name: BD-Json-server
 #      run: cd backend && ng serve
 
@@ -49,6 +51,4 @@ jobs:
 #    - name: Test
 #      run: go test -v main_test.go 
 
-  docker:
-    needs: test
-    uses: ./.github/workflows/Docker.yml
+
