@@ -25,4 +25,4 @@ jobs:
 #    - run: npm test
 
 
-    - run: cd backend && ng serve
+    - run: cd backend && npm start
