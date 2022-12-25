@@ -48,3 +48,7 @@ jobs:
 
 #    - name: Test
 #      run: go test -v main_test.go 
+
+  docker:
+    needs: test
+    uses: ./.github/workflows/Docker.yml
