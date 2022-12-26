@@ -7,21 +7,37 @@ on:
 jobs:
 
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: [16.x, 18.x]
-        os: ['ubuntu-latest']
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        node_version: [16.x, 18.x]
+#        os: ['ubuntu-latest']
+    runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+#    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node_version }}
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-#    - run: npm ci && npm i @angular/cli && npm i json-server
- 
-    - name: Subindo container
-      run: docker build .
+#        node-version: ${{ matrix.node_version }}
+        node-version: 18.x
+#      cache: 'npm'
+#        cache-dependency-path: '**/package-lock.json'
+    - name: Fazendo o Build
+      run: npm run-script build  
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+    # Artifact name
+        name: programa
+    # A file, directory or wildcard pattern that describes what to upload
+        path: node
+
+  docker:
+    needs: test
+    uses: ./.github/workflows/Docker.yml
+    secrets: inherit
+    
 
