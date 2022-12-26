@@ -26,6 +26,7 @@ jobs:
       
       
   build:
+    needs: test
     runs-on: ubuntu-latest
     
     steps:
@@ -40,7 +41,7 @@ jobs:
           path: dist
 
   docker:
-    needs: test
+    needs: build
     uses: ./.github/workflows/Docker.yml
     secrets: inherit
     
