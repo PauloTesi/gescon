@@ -8,11 +8,13 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package*.json ./
 
+RUN cd /app && ls
+
 RUN npm install && npm update
 
-RUN ls
+RUN npm install -g npm@9.2.0
 
-RUN npm start
+RUN npm run build
 
 # Bundle app source
 COPY . .
