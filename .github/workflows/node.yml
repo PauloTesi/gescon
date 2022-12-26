@@ -24,8 +24,11 @@ jobs:
         node-version: 18.x
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
+    - name: Rodando o npm install
+      run: npm install --silent
+      
     - name: Fazendo o Build
-      run: npm run build  
+      run: npm run build
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
