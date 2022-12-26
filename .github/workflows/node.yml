@@ -30,6 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+  
+      - name: Rodando o npm install
+        run: npm install --silent
+  
       - name: Fazendo o Build
         run: npm run build
 
