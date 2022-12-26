@@ -5,41 +5,42 @@ on:
     branches: [ '*' ]
 
 jobs:
-
+  
   test:
-#    runs-on: ${{ matrix.os }}
-#    strategy:
-#      matrix:
-#        node_version: [16.x, 18.x]
-#        os: ['ubuntu-latest']
-    runs-on: ubuntu-latest
-    
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: [16.x, 18.x]
+        os: ['ubuntu-latest']
+   
     steps:
     - uses: actions/checkout@v3
-#    - name: Use Node.js ${{ matrix.node-version }}
-    - name: Use Node.js 18.x
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-#        node-version: ${{ matrix.node_version }}
-        node-version: 18.x
+        node-version: ${{ matrix.node_version }}
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
     - name: Rodando o npm install
       run: npm install --silent
       
-    - name: Fazendo o Build
-      run: npm run build
+      
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Fazendo o Build
+        run: npm run build
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.1
-      with:
-    # Artifact name
-        name: programa
-        path: dist
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          # Artifact name
+          name: programa
+          path: dist
 
   docker:
     needs: test
     uses: ./.github/workflows/Docker.yml
     secrets: inherit
     
-
