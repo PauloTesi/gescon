@@ -1,0 +1,8 @@
+version: "0.1"
+
+services:
+  gescon:
+    image: gescon
+    build: .
+    ports:
+      - 8081:80
