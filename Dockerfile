@@ -8,7 +8,7 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN cd /app && npm ci
+RUN npm ci
 
 RUN npm start
 
