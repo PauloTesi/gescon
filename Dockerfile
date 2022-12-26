@@ -8,9 +8,9 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install && npm update
+RUN cd /app
 
-RUN ls
+RUN npm install && npm update
 
 RUN npm start
 
