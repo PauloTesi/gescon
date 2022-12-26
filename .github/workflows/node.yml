@@ -35,7 +35,7 @@ jobs:
       with:
     # Artifact name
         name: programa
-        path: app
+        path: dist
 
   docker:
     needs: test
