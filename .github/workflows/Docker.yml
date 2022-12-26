@@ -31,6 +31,6 @@ jobs:
         file: ./Dockerfile
     # Push is a shorthand for --output=type=registry
         push: true
-    # List of tags
+    # List of tags: github_ref_name trará a branch atual que está originou a publicação no Dockerhub
         tags: paulomelo/gescon_ci:${{ github.ref_name }}
         
