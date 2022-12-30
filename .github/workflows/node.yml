@@ -48,4 +48,16 @@ jobs:
     needs: build
     uses: ./.github/workflows/Docker.yml
     secrets: inherit
-    
+  
+  teste_img_docker:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+  
+      - name: Rodando a imagem criada
+        run: docker run julianases2014/gescon_ci
+  
+      - name: Listando os containers rodando
+        run: docker ps
+ 
