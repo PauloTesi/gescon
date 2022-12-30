@@ -53,8 +53,11 @@ jobs:
     needs: docker
     runs-on: ubuntu-latest
     steps:
+      - name: Fazendo o pull da imagem
+        run: docker pull julianases2014/gescon_ci:latest
+      
       - name: Rodando a imagem criada
-        run: docker run julianases2014/gescon_ci
+        run: docker run julianases2014/gescon_ci:latest
   
       - name: Listando os containers rodando
         run: docker ps
