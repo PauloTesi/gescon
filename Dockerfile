@@ -5,6 +5,10 @@ RUN npm install --silent
 COPY . /app
 RUN npm run build
 
+RUN cd backend
+RUN npm start
+
+
 
 # FROM nginx:alpine
 # VOLUME /var/cache/nginx
