@@ -1,8 +1,19 @@
-version: "0.1"
+version: "3.9"
 
 services:
   gescon:
-    image: gescon
-    build: .
+    image: julianases2014/gescon_ci:master
+    container_name: frontend_gescon
+    networks:
+      - compose-bridge
     ports:
-      - 8081:80
+      - 8080:80
+  mongodb:
+    image: mongo:latest
+    container_name: meu-mongo
+    networks:
+      - compose-bridge
+
+networks:
+  compose-bridge:
+    driver: "bridge"
